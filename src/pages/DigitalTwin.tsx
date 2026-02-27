@@ -12,13 +12,11 @@ import {
     AlertTriangle, CheckCircle2, Eye, Thermometer, Gauge, ArrowUpRight,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import type { Asset } from '@/types';
 import { useApp } from '@/context/AppContext';
 
 export default function DigitalTwin() {
     const { assets } = useApp();
     const [filter, setFilter] = useState('all');
-    const [selectedAsset, setSelectedAsset] = useState<Asset | null>(null);
 
     const filtered = filter === 'all' ? assets : assets.filter((a) => {
         if (filter === 'critical') return a.riskLevel === 'critical' || a.riskLevel === 'high';
@@ -104,7 +102,7 @@ export default function DigitalTwin() {
                             {/* View Details */}
                             <Dialog>
                                 <DialogTrigger asChild>
-                                    <Button variant="outline" className="w-full gap-2 text-xs" size="sm" onClick={() => setSelectedAsset(asset)}>
+                                    <Button variant="outline" className="w-full gap-2 text-xs" size="sm">
                                         <Eye className="w-3.5 h-3.5" /> View Details
                                     </Button>
                                 </DialogTrigger>
