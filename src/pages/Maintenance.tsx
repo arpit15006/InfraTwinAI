@@ -205,14 +205,14 @@ export default function Maintenance() {
 
             {/* Charts */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <Card>
+                <Card className="flex flex-col">
                     <CardHeader>
                         <CardTitle className="text-sm font-semibold">Risk Heatmap</CardTitle>
                         <CardDescription>Top 10 assets by failure probability (%)</CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        <ResponsiveContainer width="100%" height={320}>
-                            <BarChart data={riskHeatmap} layout="vertical">
+                    <CardContent className="flex-1 min-h-[400px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={riskHeatmap} layout="vertical" margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                                 <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 11 }} stroke="#94a3b8" />
                                 <YAxis type="category" dataKey="name" tick={{ fontSize: 10 }} stroke="#94a3b8" width={130} />
